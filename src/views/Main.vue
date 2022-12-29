@@ -1,9 +1,14 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px"><common-aside/></el-aside>
+      <el-aside width="200px">
+     <!--  引用组件，使用小写-方式-->
+        <common-aside/>
+      </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+          <common-header/>
+        </el-header>
         <el-main>
           <!--    路由出口-->
           <!--  匹配到到组件将渲染在这里-->
@@ -16,16 +21,21 @@
 
 <script>
 import CommonAside from "@/components/CommonAside";
+import CommonHeader from "@/components/CommonHeader";
 // 主路由
 export default {
   data() {
-    return{}
+    return {}
   },
   components: {
-    CommonAside
+    CommonAside,
+    CommonHeader
   }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.el-header {
+  padding: 0;
+}
 </style>
