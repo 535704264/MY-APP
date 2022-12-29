@@ -1,5 +1,13 @@
 <template>
+  <div>
   <h1>我是User</h1>
+  </div>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return{}
+  }
+}
+</script>
 <style></style>
