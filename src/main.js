@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from "@/router"; // 引入路由规则
 import store from '@/store';
+import './api/mock'
 
 Vue.config.productionTip = false
 
