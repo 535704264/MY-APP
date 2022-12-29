@@ -5,7 +5,7 @@
              background-color="#545c64"
              text-color="#fff"
              active-text-color="#ffd04b">
-      <h3>XXX通用管理系统</h3>
+      <h3>{{ isCollapse ? 'XXX':'XXX通用管理系统'}}</h3>
       <el-menu-item  @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
@@ -106,6 +106,7 @@ export default {
       return this.menuData.filter(item => item.children)
     },
     isCollapse() {
+      // 菜单折叠
       return this.$store.state.tab.isCollapse
     }
   }
@@ -128,6 +129,7 @@ export default {
     font-size: 16px;
     font-weight: 400;
   }
+  border-right: none;
 }
 
 </style>

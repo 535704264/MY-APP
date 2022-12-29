@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="auto">
      <!--  引用组件，使用小写-方式-->
         <common-aside/>
       </el-aside>
