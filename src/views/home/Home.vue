@@ -16,7 +16,7 @@
         </div>
       </el-card>
       <!-- table卡片 -->
-      <el-card style="margin-top: 20px;height: 350px;">
+      <el-card style="margin-top: 20px;height: 455px;">
         <el-table
             :data="tableData"
             stripe
