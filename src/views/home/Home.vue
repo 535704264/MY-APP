@@ -78,7 +78,7 @@ export default {
     async  getMockCountData() {
       try {
         const result = await getData();
-        console.log(result.data.data);
+        //console.log(result.data.data.countData);
         this.countData = result.data.data.countData;
       }catch (error) {
         console.log(error)
