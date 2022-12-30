@@ -15,7 +15,7 @@ import pageTwo from "../views/pageTwo/PageTwo.vue";
 const routes = [
     {
         path: '/',
-        component: Main,
+        component: Main, // 根路径页面
         redirect: '/home',
         children: [
             {path: 'home', component: Home}, // 首页

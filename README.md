@@ -25,5 +25,11 @@ yarn lint
 https://www.bilibili.com/video/BV1QU4y1E7qo?p=9&vd_source=a41cd2a53e509e4e0f74559bf48d2468
 https://blog.csdn.net/karshey/article/details/127652862
 
+### 
+```vue
+页面布局跳转
+访问/ -> 路由 router/index.js -> 引入组件 Main.vue == 包含主体布局， 左布局+右布局（上+下）
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

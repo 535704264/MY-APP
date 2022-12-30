@@ -14,7 +14,7 @@
         <el-header>
           <common-header/>
         </el-header>
-        <!-- 右主体   -->
+        <!-- 右主体（路由动态）   -->
         <el-main>
           <!--  路由出口， 匹配到到组件将渲染在这里-->
           <router-view></router-view>

@@ -1,13 +1,14 @@
 <template>
+  <!--整个头部区域   -->
   <div class="header-container">
+    <!--  头部左边边区域   -->
     <div class="l-content">
       <el-button @click="handleMenu" icon="el-icon-menu" size="mini"></el-button>
       <!--  面包屑区域-->
       <span class="text">首页</span>
-
     </div>
+    <!--  头部右边区域   -->
     <div class="r-content">
-
       <el-dropdown>
          <span class="el-dropdown-link">
            <img class="user" src="../assets/images/user.png">
