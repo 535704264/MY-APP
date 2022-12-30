@@ -4,7 +4,7 @@
       <!-- user卡片 -->
       <el-card class="box-card">
         <div class="user">
-          <img src="../assets/images/user.png">
+          <img src="../../assets/images/user.png">
           <div class="user-info">
             <p class="name">Admin</p>
             <p class="access">超级管理员</p>
@@ -48,7 +48,8 @@
 </template>
 
 <script>
-import {getData} from '../api'
+// 取 mockjs 中的数据
+import {getData} from '../../api'
 
 export default {
   data() {

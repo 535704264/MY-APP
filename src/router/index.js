@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
-import Home from '../views/Home.vue';
-import User from '../views/User.vue';
+import Home from '../views/home/Home.vue';
+import User from '../views/user/User.vue';
 import Main from '../views/Main.vue';
-import Mall from '../views/Mall.vue';
-import pageOne from "../views/PageOne.vue";
-import pageTwo from "../views/PageTwo.vue";
+import Mall from '../views/mall/Mall.vue';
+import pageOne from "../views/pageOne/PageOne.vue";
+import pageTwo from "../views/pageTwo/PageTwo.vue";
 
 
 // 1、创建路由组件
