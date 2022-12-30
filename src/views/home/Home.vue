@@ -54,44 +54,7 @@ import {getData} from '../../api'
 export default {
   data() {
     return {
-      tableData: [
-        {
-          name: 'oppo',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        },
-        {
-          name: 'vivo',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        },
-        {
-          name: '苹果',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        },
-        {
-          name: '小米',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        },
-        {
-          name: '三星',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        },
-        {
-          name: '魅族',
-          todayBuy: 100,
-          monthBuy: 300,
-          totalBuy: 800
-        }
-      ],
+      tableData: [this.getMockTableData],
       tableLabel: {
         name: '课程',
         todayBuy: '今日购买',
@@ -138,12 +101,25 @@ export default {
       ]
     }
   },
+  methods: {
+    // 异步获取mock数据（后端数据）
+    async  getMockTableData() {
+        try {
+          const result = await getData();
+          // console.log(result.data.data.tableData);
+          this.tableData = result.data.data.tableData;
+        }catch (error){
+          console.log(error)
+        }
+    }
+  },
   mounted() {
     // 获取后端请求数据
-    getData().then((data) => {
-      const {tableData} = data.data.data
-      console.log(tableData)
-    })
+    this.getMockTableData(); // methods中的定义
+    // getData().then((data) => {
+    //   const {tableData} = data.data.data
+    //   console.log(tableData)
+    // })
   }
 }
 </script>
