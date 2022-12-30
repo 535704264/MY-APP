@@ -108,7 +108,7 @@ export default {
           const result = await getData();
           // console.log(result.data.data.tableData);
           this.tableData = result.data.data.tableData;
-        }catch (error){
+        }catch (error) {
           console.log(error)
         }
     }
