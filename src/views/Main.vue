@@ -7,13 +7,13 @@
         <!--  引用组件，使用小写-方式-->
         <common-aside/>
       </el-aside>
-
       <!--  右边主体区域  -->
       <el-container>
          <!-- 右头部 -->
         <el-header>
           <common-header/>
         </el-header>
+        <common-tag/>
         <!-- 右主体（路由动态）   -->
         <el-main>
           <!--  路由出口， 匹配到到组件将渲染在这里-->
@@ -28,6 +28,8 @@
 <script>
 import CommonAside from "@/layout/CommonAside";
 import CommonHeader from "@/layout/CommonHeader";
+import CommonTag from  "@/components/CommonTag";
+
 // 主路由
 export default {
   data() {
@@ -35,7 +37,8 @@ export default {
   },
   components: {
     CommonAside,
-    CommonHeader
+    CommonHeader,
+    CommonTag
   }
 }
 </script>

@@ -8,6 +8,7 @@ import pageOne from "../views/pageOne/PageOne.vue";
 import pageTwo from "../views/pageTwo/PageTwo.vue";
 
 
+
 // 1、创建路由组件
 // 2、将路由与组件进行映射
 // 3、创建Router实例
@@ -18,11 +19,11 @@ const routes = [
         component: Main, // 根路径页面
         redirect: '/home',
         children: [
-            {path: 'home', component: Home}, // 首页
-            {path: 'user', component: User}, // 用户管理
-            {path: 'mall', component: Mall},  // 商品管理
-            {path: 'page1', component: pageOne}, // 页面1
-            {path: 'page2', component: pageTwo}  // 页面2
+            {path: 'home', name: 'home', component: Home}, // 首页
+            {path: 'user', name: 'user', component: User}, // 用户管理
+            {path: 'mall',  name: 'mall',component: Mall},  // 商品管理
+            {path: 'page1', name: 'page1',component: pageOne}, // 页面1
+            {path: 'page2', name: 'page2', component: pageTwo}  // 页面2
         ]
     }
 ]
@@ -34,3 +35,11 @@ const router = new VueRouter(
 export  default router
 
 Vue.use(VueRouter)
+
+// 解决点击路由重复控制台报错问题
+//获取原型对象上的push函数
+const originalPush = VueRouter.prototype.push
+//修改原型对象中的push方法
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}

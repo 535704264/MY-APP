@@ -93,6 +93,8 @@ export default {
         // $router当前$router实例
         this.$router.push(item.path)
       }
+      // 面包屑
+      this.$store.commit('selectMenu',item)
 
     }
   },
