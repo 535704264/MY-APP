@@ -1,7 +1,7 @@
 <template>
   <!-- 主页面框架  -->
   <div>
-    <el-container>
+    <el-container class="main-wrapper">
         <!--  左导航区域     -->
       <el-aside width="auto">
         <!--  引用组件，使用小写-方式-->
@@ -44,7 +44,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-header {
-  padding: 0;
+.main-wrapper {
+  height: 100vh;
+  .el-header {
+    padding: 0;
+  }
 }
+
 </style>
