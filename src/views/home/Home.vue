@@ -83,7 +83,7 @@ export default {
         const result = await getData()
         //console.log(result.data.data.orderData)
         // this.orderData = result.data.data.orderData
-        console.log(result.data.data.orderData)
+        // console.log(result.data.data.orderData)
 
         // -----
         // 基于准备好的dom，初始化echarts实例
@@ -107,7 +107,7 @@ export default {
             type: 'line'
           })
         })
-        console.log(echarts1Option)
+        // console.log(echarts1Option)
         echarts1.setOption(echarts1Option)
 
 
