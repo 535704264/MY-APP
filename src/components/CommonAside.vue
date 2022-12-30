@@ -6,6 +6,7 @@
              text-color="#fff"
              active-text-color="#ffd04b">
       <h3>{{ isCollapse ? 'Demo':'管理系统Demo'}}</h3>
+      <!--  菜单   -->
       <el-menu-item  @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
@@ -116,12 +117,14 @@ export default {
 
 <!--使用less-->
 <style lang="less" scoped>
+//
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
+  width: 200px;  // 导航宽度
+  min-height: 400px; // 最小高度
 }
+//
 .el-menu {
-  height: 100vh;
+  height: 100vh; //vh与浏览器高度一致
   h3 {
     color: #fff;
     text-align: center;
