@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import CommonAside from "@/components/CommonAside";
-import CommonHeader from "@/components/CommonHeader";
+import CommonAside from "@/layout/CommonAside";
+import CommonHeader from "@/layout/CommonHeader";
 // 主路由
 export default {
   data() {
