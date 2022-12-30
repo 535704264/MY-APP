@@ -37,6 +37,7 @@
       </div>
       <el-card style="height: 235px">
         <!--   折线图-->
+          <div ref="echarts1" style="height: 235px"></div>
       </el-card>
       <div class="graph">
         <el-card style="height: 195px">
@@ -50,31 +51,24 @@
 <script>
 // 取 mockjs 中的数据
 import {getData} from '../../api'
+// 引入echarts
+import * as echarts from 'echarts'
 
 export default {
   data() {
     return {
-      tableData: [this.getMockTableData],
+      tableData: [],
       tableLabel: {
         name: '课程',
         todayBuy: '今日购买',
         monthBuy: '本月购买',
         totalBuy: '总购买'
       },
-      countData: [ this.getMockCountData]
+      countData: []
     }
   },
   methods: {
     // 异步获取mock数据（后端数据）
-    async  getMockTableData() {
-        try {
-          const result = await getData();
-          // console.log(result.data.data.tableData);
-          this.tableData = result.data.data.tableData;
-        }catch (error) {
-          console.log(error)
-        }
-    },
     async  getMockCountData() {
       try {
         const result = await getData();
@@ -83,16 +77,63 @@ export default {
       }catch (error) {
         console.log(error)
       }
+    },
+    async setEchartsGraphData() {
+      try {
+        const result = await getData()
+        //console.log(result.data.data.orderData)
+        // this.orderData = result.data.data.orderData
+        console.log(result.data.data.orderData)
+
+        // -----
+        // 基于准备好的dom，初始化echarts实例
+        const echarts1 = echarts.init(this.$refs.echarts1)
+        const echarts1Option = {}
+        // var option = {}
+        // 处理数据xAxis
+        const { orderData} = result.data.data
+        const xAxis = Object.keys(orderData.data[0])
+        const xAxisData = {
+          data: xAxis
+        }
+        echarts1Option.xAxis = xAxisData
+        echarts1Option.yAxis = {}
+        echarts1Option.legend = xAxisData
+        echarts1Option.series = []
+        xAxis.forEach(key=>{
+          echarts1Option.series.push({
+            name: key,
+            data: orderData.data.map(item=>item[key]),
+            type: 'line'
+          })
+        })
+        console.log(echarts1Option)
+        echarts1.setOption(echarts1Option)
+
+
+      }catch (error) {
+        console.log(error)
+      }
     }
   },
   mounted() {
     // 获取后端请求数据
-    this.getMockTableData(); // methods中的定义
-    this.getMockCountData();
-    // getData().then((data) => {
-    //   const {tableData} = data.data.data
-    //   console.log(tableData)
-    // })
+    // 方式一：
+    getData().then((data) => {
+      const {tableData} = data.data.data
+      // console.log(tableData)
+      this.tableData  =tableData;
+    })
+    // 方式二：
+    // methods中的定义
+    this.getMockCountData()
+
+    // 设置折线图数据
+    this.setEchartsGraphData()
+
+
+
+
   }
 }
 </script>
