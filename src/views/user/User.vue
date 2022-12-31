@@ -180,7 +180,7 @@ export default {
         this.tableData = data.list
         this.total = data.count || 0
         // 打印完整返回str
-        // console.log(JSON.stringify(data.list))
+        // console.log(JSON.stringify(data))
       })
     },
     handleDelete(row){
