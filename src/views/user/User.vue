@@ -57,6 +57,11 @@
           height="90%"
           :data="tableData"
           style="width: 100%">
+        <el-table-column label="序号" >
+          <template slot-scope="scope">{{
+              scope.$index + 1 > 9 ? scope.$index + 1 : "0" + (scope.$index + 1)
+            }}</template>
+        </el-table-column>
         <el-table-column
             prop="name"
             label="姓名">
