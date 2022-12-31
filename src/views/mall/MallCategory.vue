@@ -20,6 +20,12 @@
             Append
           </el-button>
           <el-button
+              type="text"
+              size="mini"
+              @click="() => edit(data)">
+            Edit
+          </el-button>
+          <el-button
               v-if="node.childNodes.length==0"
               type="text"
               size="mini"
@@ -30,15 +36,25 @@
       </span>
     </el-tree>
 
-    <el-dialog title="提示" :visible.sync="dialogFormVisible" width="30%">
+    <el-dialog v-bind:title="title" :visible.sync="dialogFormVisible" width="30%" :close-on-click-modal="false">
       <el-form  :model="category" >
         <el-form-item label="分类名称">
           <el-input v-model="category.name" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
+      <el-form  :model="category" >
+        <el-form-item label="图标">
+          <el-input v-model="category.icon" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <el-form  :model="category" >
+        <el-form-item label="计量单位">
+          <el-input v-model="category.productUnit" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addCategory">确 定</el-button>
+        <el-button type="primary" @click="submitData">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -47,11 +63,12 @@
 
 <script>
 // 获取后端数据定义
-import {addMallCategory, getMallCategory, removeMallCategory} from '../../api'
+import {addMallCategory, editMallCategory, findMallCategory, getMallCategory, removeMallCategory} from '../../api'
 
 export default {
   data() {
     return {
+      title:"",
       dialogFormVisible: false,
       menus: [],
       expandedKey: [],
@@ -59,6 +76,7 @@ export default {
         children: "children",
         label: "name"
       },
+      dialogType:"", //edit, add
       category:{name: "",
         parentCid: 0,
         catLevel: 0,
@@ -136,6 +154,64 @@ export default {
         // 设置默认需要展开的菜单
         this.expandedKey = [this.category.parentCid]
       })
+    },
+    // 修改三级分类数据
+    editCategory() {
+      // 修改部分数据
+      var {catId,name,icon, productUnit} = this.category;
+      var data = {catId: catId, name: name, icon: icon, productUnit: productUnit}
+      // 修改全量数据
+      // var data = this.category
+      editMallCategory(data).then((data)=>{
+        console.log(data)
+        this.$message({
+          type: 'success',
+          message: '菜单修改成功!'
+        });
+        // 关闭对话框
+        this.dialogFormVisible = false;
+        // 刷新菜单
+        this.getMenus();
+        // 设置默认需要展开的菜单
+        this.expandedKey = [this.category.parentCid]
+      })
+    },
+    edit(data){
+      console.log("修改分类数据", data)
+      this.title = "修改分类";
+      this.dialogType = "edit"
+      this.dialogFormVisible = true
+
+      // 发送请求获取当前节点最新数据
+      findMallCategory(data.catId).then((_data)=>{
+        console.log(_data)
+        this.category.name = _data.data.data.name
+        this.category.catId = _data.data.data.catId
+        this.category.icon = _data.data.data.icon
+        this.category.productUnit = _data.data.data.productUnit
+        this.category.parentCid = _data.data.data.parentCid
+        this.category.catLevel = _data.data.data.parentCid
+        this.category.showStatus = _data.data.data.showStatus
+        this.category.sort = _data.data.data.sort
+        // this.$message({
+        //   type: 'success',
+        //   message: '菜单保存成功!'
+        // });
+        // // 关闭对话框
+        // this.dialogFormVisible = false;
+        // // 刷新菜单
+        // this.getMenus();
+        // // 设置默认需要展开的菜单
+        // this.expandedKey = [this.category.parentCid]
+      })
+
+    },
+    submitData(){
+      if (this.dialogType =="add") {
+        this.addCategory()
+      } else if (this.dialogType == "edit") {
+        this.editCategory()
+      }
     }
   },
   mounted() {

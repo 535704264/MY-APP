@@ -47,3 +47,12 @@ export const removeMallCategory = (params) => {
 export const addMallCategory = (data) => {
     return http.post('/mall/category/save',data)
 }
+
+
+export const findMallCategory = (id) => {
+    return http.get(`/mall/category/info/${id}`)
+}
+
+export const editMallCategory = (data) => {
+    return http.post('/mall/category/update',data)
+}
