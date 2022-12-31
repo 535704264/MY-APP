@@ -39,14 +39,14 @@ export default {
                                     name: 'page1',
                                     label: '页面1',
                                     icon: 'setting',
-                                    url: '/pageOne/PageOne.vue'
+                                    url: 'pageOne/PageOne.vue'
                                 },
                                 {
                                     path: '/page2',
                                     name: 'page2',
                                     label: '页面2',
                                     icon: 'setting',
-                                    url: '/pageTwo/PageTwo.vue'
+                                    url: 'pageTwo/PageTwo.vue'
                                 }
                             ]
                         }

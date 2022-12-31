@@ -42,6 +42,8 @@ export default {
         // 清楚cookie中的token
         Cookie.remove('token')
         this.$router.push('/login')
+        // 清除cookie中menu
+        this.$router.push('/menu')
       }
     }
   },
