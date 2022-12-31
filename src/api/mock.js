@@ -7,7 +7,10 @@ import permission from './mockServeData/permission'
 Mock.mock('/api/home/gateData', homeApi.getStatisticalData())
 
 // 用户列表的请求数据拦截(增删改查)
-Mock.mock(/\/api\/user\/get/,user.getUserList)
+// 如果不走mock就注释
+//Mock.mock(/\/api\/user\/get/,user.getUserList)
+
+
 Mock.mock('/api/user/add','post',user.addUser)
 Mock.mock('/api/user/update','post',user.updateUser)
 Mock.mock('/api/user/del','post',user.deleteUser)

@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import router from "@/router"; // 引入路由规则
 import store from '@/store';
 // 后端请求，注释mock
-// import './api/mock'
+import './api/mock'
 import Cookie from "js-cookie";
 
 Vue.config.productionTip = false
