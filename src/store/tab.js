@@ -4,7 +4,7 @@ export default {
         isCollapse: false, // 控制菜单的展开还是收起
         tabList: [
             {
-                path: '/',
+                path: '/home',
                 name: 'home',
                 label: '首页',
                 icon: 's-home',
