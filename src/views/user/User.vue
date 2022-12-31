@@ -41,10 +41,19 @@
     <div class="manage-header">
       <el-button @click="handleAdd()" type="primary">+ 新增</el-button>
       <!---form搜索区域-->
+      <el-form :inline="true" :model="userForm">
+        <el-form-item>
+          <el-input placeholder="请输入名称" v-model="userForm.name"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+      </el-form>
     </div>
-<!--    表格-->
+     <!--    表格-->
     <div class="common-table">
       <el-table
+          stripe
           height="90%"
           :data="tableData"
           style="width: 100%">
@@ -64,15 +73,15 @@
         <el-table-column prop="oper" label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button type="danger" size="mini" @click="handleDelelte(scope.row)">删除</el-button>
+            <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
       <div class="pager">
         <el-pagination
             layout="prev, pager, next"
-            :total="50"
-           :current-change="handlePage">
+            :total="total"
+           @current-change="handlePage">
         </el-pagination>
       </div>
     </div>
@@ -114,7 +123,15 @@ export default {
         ]
       },
       tableData:[],
-      modalType: 0 // 0 表示新增， 1表示编辑
+      modalType: 0, // 0 表示新增， 1表示编辑,
+      total: 0, // 当前总条数
+      pageData: {
+        page: 1,
+        limit: 10
+      },
+      userForm: {
+        name: ''
+      }
     }
   },
   methods:{
@@ -158,12 +175,13 @@ export default {
     },
     getList() {
       // 获取列表数据
-      getUser().then(({data})=>{
+      getUser({params: {...this.userForm, ...this.pageData}}).then(({data})=>{
         // console.log(data)
         this.tableData = data.list
+        this.total = data.count || 0
       })
     },
-    handleDelelte(row){
+    handleDelete(row){
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -195,7 +213,16 @@ export default {
       this.modalType = 0
       this.dialogVisible = true
     },
-    handlePage(){}
+    // 选择页码对回调函数
+    handlePage(val){
+      // console.log(val)
+      this.pageData.page = val
+      this.getList()
+    },
+    // 列表查询
+    onSubmit() {
+      this.getList()
+    }
 
 
   },
@@ -209,6 +236,11 @@ export default {
 <style lang="less" scoped>
 .manage{
   height: 90%;
+  .manage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .common-table {
     position: relative;
     height: calc(100% - 60px);
