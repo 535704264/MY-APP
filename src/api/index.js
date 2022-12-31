@@ -42,3 +42,8 @@ export const getMallCategory = (params) => {
 export const removeMallCategory = (params) => {
     return http.post('/mall/category/delete',params)
 }
+
+
+export const addMallCategory = (data) => {
+    return http.post('/mall/category/save',data)
+}
