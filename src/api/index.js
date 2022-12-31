@@ -32,3 +32,9 @@ export const updateUser = (data) => {
 export const getMenu = (data) => {
     return http.post('/permission/getMenu/', data)
 }
+
+
+
+export const getMallCategory = (params) => {
+    return http.get('/mall/category/list/tree',params)
+}

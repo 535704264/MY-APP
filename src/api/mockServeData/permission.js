@@ -17,11 +17,19 @@ export default {
                             url: 'home/Home.vue'
                         },
                         {
-                            path: '/mall',
+                            // path: '/mall',
                             name: 'mall',
                             label: '商品管理',
                             icon: 'video-play',
-                            url: 'mall/Mall.vue'
+                            // url: 'mall/Mall.vue',
+                            children: [
+                                {
+                                    path: '/mall/category',
+                                    name: 'classify',
+                                    label: '分类维护',
+                                    url: 'mall/MallCategory.vue'
+                                }
+                            ]
                         },
                         {
                             path: '/user',
