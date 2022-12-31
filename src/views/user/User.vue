@@ -179,6 +179,8 @@ export default {
         // console.log(data)
         this.tableData = data.list
         this.total = data.count || 0
+        // 打印完整返回str
+        // console.log(JSON.stringify(data.list))
       })
     },
     handleDelete(row){
