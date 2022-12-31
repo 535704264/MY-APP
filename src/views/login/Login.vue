@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form  class="login_container"  :model="login" status-icon :rules="rules" ref="login" label-width="70px">
+    <el-form  class="login_container"  :model="login" status-icon :rules="rules" ref="form" label-width="70px">
       <!-- h3要放在里面:只能有一个根,且title也是表单的一部分 -->
       <h3 class="login_title">用户登录</h3>
       <!-- prop对应rules里的键 -->
@@ -18,8 +18,12 @@
 </template>
 
 <script>
-import Mock from 'mockjs'
+// import Mock from 'mockjs'
 import Cookie from 'js-cookie'
+
+import {getMenu} from '../../api/'
+
+
 export default {
   data() {
     return {
@@ -37,13 +41,38 @@ export default {
   },
   methods: {
     submit() {
+      // 示例Demo
       // 登陆
       // 获取token信息
-      const token = Mock.Random.guid()
-      // token 放在cookie中, 用于不通页面通讯
-      Cookie.set('token', token)
+      // const token = Mock.Random.guid()
+      // // token 放在cookie中, 用于不通页面通讯
+      // Cookie.set('token', token)
       // 跳转到系统的首页
-      this.$router.push('/home')
+      // this.$router.push('/home')
+
+
+      // 生产
+      // form 表单校验通过
+      this.$refs.form.validate((valid)=>{
+        //console.log(valid, 'valid')
+        if (valid) {
+          // 获取菜单
+          getMenu(this.form).then(({data})=>{
+            // console.log(data)
+            if(data.data.code===20000){
+              // 记录cookie
+              Cookie.set('token',data.data.data.token)
+              // 跳转到首页
+              this.$router.push('/home')
+            }else{
+              // 验证失败的弹窗
+              this.$message.error(data.data.data.message);
+            }
+          })
+        }
+      })
+
+
     }
   }
 }
