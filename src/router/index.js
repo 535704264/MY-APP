@@ -18,6 +18,7 @@ const routes = [
     {
         path: '/',
         component: Main, // 根路径页面
+        name: 'Main',
         redirect: '/home',
         children: [
             {path: 'home', name: 'home', component: Home}, // 首页

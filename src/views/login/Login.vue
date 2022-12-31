@@ -58,7 +58,7 @@ export default {
         if (valid) {
           // 获取菜单
           getMenu(this.login).then(({data})=>{
-            console.log(data)
+            // console.log(data)
             if(data.code===20000){
               // 记录cookie
               Cookie.set('token',data.data.token)
@@ -66,7 +66,7 @@ export default {
               // 获取菜单的数据，存入store中
               //
               this.$store.commit('setMenu',data.data.menu)
-
+              this.$store.commit('addMenu',this.$router)
               // 跳转到首页
               this.$router.push('/home')
             } else {
