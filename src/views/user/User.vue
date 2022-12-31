@@ -40,10 +40,12 @@
     <!--  新增按钮   -->
     <div class="manage-header">
       <el-button @click="handleAdd()" type="primary">+ 新增</el-button>
+      <!---form搜索区域-->
     </div>
 <!--    表格-->
-    <div>
+    <div class="common-table">
       <el-table
+          height="90%"
           :data="tableData"
           style="width: 100%">
         <el-table-column
@@ -66,9 +68,15 @@
           </template>
         </el-table-column>
       </el-table>
-
-
+      <div class="pager">
+        <el-pagination
+            layout="prev, pager, next"
+            :total="50"
+           :current-change="handlePage">
+        </el-pagination>
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -186,7 +194,8 @@ export default {
     handleAdd() {
       this.modalType = 0
       this.dialogVisible = true
-    }
+    },
+    handlePage(){}
 
 
   },
@@ -196,4 +205,19 @@ export default {
   }
 }
 </script>
-<style></style>
+
+<style lang="less" scoped>
+.manage{
+  height: 90%;
+  .common-table {
+    position: relative;
+    height: calc(100% - 60px);
+    .pager {
+      position: absolute;
+      bottom: 0px;
+      right: 20px;
+    }
+  }
+}
+
+</style>
