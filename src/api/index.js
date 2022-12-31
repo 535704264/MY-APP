@@ -1,4 +1,6 @@
 import http from '../utils/request'
+// import axios from "axios";
+// import Vue from 'vue'
 
 // 请求首页数据
 // vue->mockjs 定义获取的方法
@@ -9,6 +11,9 @@ export const getData = () => {
 
 // 下面四个:用户管理-后端-网络请求接口
 export const getUser = (params) => {
+    // 全称地址为/api/user/get
+    // todo 需要去掉前缀 /api/user/get 改为   /auth/user/get
+    // http.defaults.baseURL = '/auth'
     return http.get('/user/get/', params)
 }
 
