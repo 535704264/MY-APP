@@ -33,3 +33,8 @@ https://blog.csdn.net/karshey/article/details/127652862
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## 遗留问题记录
+1、A用户登出，再次登陆会报路由重复
+2、A用户登出，B用户登入还保留着A用户的面包屑

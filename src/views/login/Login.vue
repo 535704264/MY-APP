@@ -66,8 +66,9 @@ export default {
               // 获取菜单的数据，存入store中
               //
               this.$store.commit('setMenu',data.data.menu)
-              // this.$store.commit('addMenu',this.$router)
-              // 跳转到首页
+              // 路径重复问题 Duplicate named xxxxx
+              this.$store.commit('addMenu',this.$router)
+              //    跳转到首页
               this.$router.push('/home')
             } else {
               // 验证失败的弹窗
