@@ -79,10 +79,14 @@
       </el-table>
       <div class="pager">
         <el-pagination
-            layout="prev, pager, next"
-            :total="total"
-           @current-change="handlePage">
+            @size-change="handleSizeChange"
+            @current-change="handlePage"
+            :page-sizes="[10,  30,  50, 100]"
+            :page-size="10"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total">
         </el-pagination>
+
       </div>
     </div>
 
@@ -219,6 +223,11 @@ export default {
     handlePage(val){
       // console.log(val)
       this.pageData.page = val
+      this.getList()
+    },
+    handleSizeChange(val){
+      // 选择每页多少条回调
+      this.pageData.limit = val
       this.getList()
     },
     // 列表查询
