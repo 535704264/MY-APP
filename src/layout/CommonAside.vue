@@ -96,6 +96,7 @@ export default {
       }
       // 面包屑
       this.$store.commit('selectMenu',item)
+      //
 
     }
   },
