@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form  class="login_container"  :model="login" status-icon :rules="rules" ref="form" label-width="70px">
+    <el-form  class="login_container"  :model="login" status-icon :rules="rules" ref="login" label-width="70px">
       <!-- h3要放在里面:只能有一个根,且title也是表单的一部分 -->
       <h3 class="login_title">用户登录</h3>
       <!-- prop对应rules里的键 -->
@@ -53,11 +53,11 @@ export default {
 
       // 生产
       // form 表单校验通过
-      this.$refs.form.validate((valid)=>{
+      this.$refs.login.validate((valid)=>{
         //console.log(valid, 'valid')
         if (valid) {
           // 获取菜单
-          getMenu(this.form).then(({data})=>{
+          getMenu(this.login).then(({data})=>{
             // console.log(data)
             if(data.data.code===20000){
               // 记录cookie
@@ -66,7 +66,7 @@ export default {
               this.$router.push('/home')
             }else{
               // 验证失败的弹窗
-              this.$message.error(data.data.data.message);
+              // this.$message.error(data.data.data.message);
             }
           })
         }
