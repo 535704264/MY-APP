@@ -41,9 +41,11 @@ export default {
       if (command==='logout') {
         // 清楚cookie中的token
         Cookie.remove('token')
-        this.$router.push('/login')
         // 清除cookie中menu
-        this.$router.push('/menu')
+        Cookie.remove('menu')
+        // 跳转登陆页面
+        this.$router.push('/login')
+
       }
     }
   },
