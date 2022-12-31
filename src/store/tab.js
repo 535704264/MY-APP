@@ -67,6 +67,10 @@ export default {
                 router.addRoute('Main',item)
             })
           //  menuArray.push()
-        }
+        },
+        setUserInfo(state, val) {
+            console.log(val)
+            Cookie.set('user', val)
+        },
     }
 }

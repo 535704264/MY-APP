@@ -6,7 +6,7 @@
         <div class="user">
           <img src="../../assets/images/user.png">
           <div class="user-info">
-            <p class="name">Admin</p>
+            <p class="name">{{userName}}</p>
             <p class="access">超级管理员</p>
           </div>
         </div>
@@ -56,10 +56,12 @@
 import {getData} from '../../api'
 // 引入echarts
 import * as echarts from 'echarts'
+import Cookie from "js-cookie";
 
 export default {
   data() {
     return {
+      userName: 'Admin',
       tableData: [],
       tableLabel: {
         name: '课程',
@@ -224,8 +226,8 @@ export default {
     // 设置折线图数据
     this.setEchartsGraphData()
 
-
-
+    // 取cookies中的用户姓名
+    this.userName = Cookie.get('user')
 
   }
 }
