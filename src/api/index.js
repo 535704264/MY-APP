@@ -38,3 +38,7 @@ export const getMenu = (data) => {
 export const getMallCategory = (params) => {
     return http.get('/mall/category/list/tree',params)
 }
+
+export const removeMallCategory = (params) => {
+    return http.post('/mall/category/delete',params)
+}
