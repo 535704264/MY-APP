@@ -11,7 +11,7 @@
         <el-input type="password" v-model="login.password" placeholder="请输入密码" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="margin-left:30px;margin-top:10px">登陆</el-button>
+        <el-button type="primary" style="margin-left:40px;margin-top:9px">登陆</el-button>
       </el-form-item>
     </el-form>
   </div>
