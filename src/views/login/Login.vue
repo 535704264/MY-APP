@@ -75,7 +75,7 @@ export default {
               this.$message.error(data.data.message);
             }
             // 当前登陆人
-            console.log(this.login.username)
+            // console.log(this.login.username)
             // 登陆成功放用户信息放到Cookie里面
             this.$store.commit('setUserInfo',this.login.username)
 

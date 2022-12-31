@@ -69,7 +69,7 @@ export default {
           //  menuArray.push()
         },
         setUserInfo(state, val) {
-            console.log(val)
+            // console.log(val)
             Cookie.set('user', val)
         },
     }
