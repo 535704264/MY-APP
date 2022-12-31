@@ -62,6 +62,11 @@ export default {
             if(data.code===20000){
               // 记录cookie
               Cookie.set('token',data.data.token)
+
+              // 获取菜单的数据，存入store中
+              //
+              this.$store.commit('setMenu',data.data.menu)
+
               // 跳转到首页
               this.$router.push('/home')
             } else {
