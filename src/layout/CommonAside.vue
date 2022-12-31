@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo"
+             @open="handleOpen"
+             @close="handleClose"
              :collapse="isCollapse"
              background-color="#545c64"
              text-color="#fff"
@@ -80,10 +82,12 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // 点击打开
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      // 点击关闭
+      // console.log(key, keyPath);
     },
     // 点击菜单方法
     clickMenu(item) {
