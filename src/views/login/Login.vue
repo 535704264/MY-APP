@@ -11,13 +11,15 @@
         <el-input type="password" v-model="login.password" placeholder="请输入密码" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="margin-left:40px;margin-top:9px">登陆</el-button>
+        <el-button type="primary" @click="submit" style="margin-left:40px;margin-top:9px">登陆</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import Mock from 'mockjs'
+import Cookie from 'js-cookie'
 export default {
   data() {
     return {
@@ -33,7 +35,17 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    submit() {
+      // 登陆
+      // 获取token信息
+      const token = Mock.Random.guid()
+      // token 放在cookie中, 用于不通页面通讯
+      Cookie.set('token', token)
+      // 跳转到系统的首页
+      this.$router.push('/home')
+    }
+  }
 }
 </script>
 
