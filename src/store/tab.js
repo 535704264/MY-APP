@@ -45,15 +45,18 @@ export default {
             state.menu  = menu
             // 组装动态路由的数据
             const menuArray = []
-            menu.forEach(item=>{
+            menu.forEach(item => {
                 if (item.children) {
-                    item.children = item.children.map(item=>{
-                        item.component =() => import(`../views/${item.url}/`)
+                    // 有子路由
+                    item.children = item.children.map(it=>{
+                        it.component =() => import(`../views/${it.url}`)
+                        return it
                     })
                    menuArray.push(...item.children)
 
-                }else {
-                    item.component =() => import(`../views/${item.url}/`)
+                } else {
+                    // 没有子
+                    item.component =() => import(`../views/${item.url}`)
                     menuArray.push(item)
                 }
             });
