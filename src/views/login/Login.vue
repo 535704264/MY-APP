@@ -58,17 +58,19 @@ export default {
         if (valid) {
           // 获取菜单
           getMenu(this.login).then(({data})=>{
-            // console.log(data)
-            if(data.data.code===20000){
+            console.log(data)
+            if(data.code===20000){
               // 记录cookie
-              Cookie.set('token',data.data.data.token)
+              Cookie.set('token',data.data.token)
               // 跳转到首页
               this.$router.push('/home')
-            }else{
+            } else {
               // 验证失败的弹窗
-              // this.$message.error(data.data.data.message);
+              this.$message.error(data.data.message);
             }
-          })
+          }
+
+          )
         }
       })
 
