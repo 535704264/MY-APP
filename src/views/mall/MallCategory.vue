@@ -8,7 +8,8 @@
         :expand-on-click-node="false"
         :default-expanded-keys="expandedKey"
         :draggable="true"
-        :allow-drop="allowDrop">
+        :allow-drop="allowDrop"
+        @node-drop="handleDrop">
 
       <!-- 新增/删除节点-->
       <span class="custom-tree-node" slot-scope="{ node, data }">
@@ -65,11 +66,19 @@
 
 <script>
 // 获取后端数据定义
-import {addMallCategory, editMallCategory, findMallCategory, getMallCategory, removeMallCategory} from '../../api'
+import {
+  addMallCategory,
+  editMallCategory,
+  findMallCategory,
+  getMallCategory,
+  removeMallCategory,
+  sortMallCategory
+} from '../../api'
 
 export default {
   data() {
     return {
+      updateNodes:[],
       maxLevel: 0,
       title:"",
       dialogFormVisible: false,
@@ -247,7 +256,79 @@ export default {
       } else {
         return deep + dropNode.parent.level <= 3;
       }
-    }
+    },
+    handleDrop(draggingNode, dropNode, dropType, ev) {
+      console.log("handleDrop: ", draggingNode, dropNode, dropType);
+      //1、当前节点最新的父节点id
+      let pCid = 0;
+      let siblings = null;
+      if (dropType === "before" || dropType === "after") {
+        pCid =
+            dropNode.parent.data.catId === undefined
+                ? 0
+                : dropNode.parent.data.catId;
+        siblings = dropNode.parent.childNodes;
+      } else {
+        pCid = dropNode.data.catId;
+        siblings = dropNode.childNodes;
+      }
+      // this.pCid.push(pCid);
+
+      //2、当前拖拽节点的最新顺序，
+      for (let i = 0; i < siblings.length; i++) {
+        if (siblings[i].data.catId === draggingNode.data.catId) {
+          //如果遍历的是当前正在拖拽的节点
+          let catLevel = draggingNode.level;
+          if (siblings[i].level !== draggingNode.level) {
+            //当前节点的层级发生变化
+            catLevel = siblings[i].level;
+            //修改他子节点的层级
+            this.updateChildNodeLevel(siblings[i]);
+          }
+          this.updateNodes.push({
+            catId: siblings[i].data.catId,
+            sort: i,
+            parentCid: pCid,
+            catLevel: catLevel
+          });
+        } else {
+          this.updateNodes.push({ catId: siblings[i].data.catId, sort: i });
+        }
+      }
+
+      //3、当前拖拽节点的最新层级
+      console.log("updateNodes", this.updateNodes);
+      // 发送后端请求排序
+      sortMallCategory(this.updateNodes).then(()=>{
+        // console.log(data)
+        this.$message({
+          type: 'success',
+          message: '菜单顺序修改成功!'
+        });
+
+        // 刷新菜单
+        this.getMenus();
+        //
+
+        // 设置默认需要展开的菜单
+        this.expandedKey = [pCid]
+        this.updateNodes = []
+        this.maxLevel = 0;
+      })
+
+    },
+    updateChildNodeLevel(node) {
+      if (node.childNodes.length > 0) {
+        for (let i = 0; i < node.childNodes.length; i++) {
+          var cNode = node.childNodes[i].data;
+          this.updateNodes.push({
+            catId: cNode.catId,
+            catLevel: node.childNodes[i].level
+          });
+          this.updateChildNodeLevel(node.childNodes[i]);
+        }
+      }
+    },
   },
   mounted() {
     // 挂载数据

@@ -56,3 +56,7 @@ export const findMallCategory = (id) => {
 export const editMallCategory = (data) => {
     return http.post('/mall/category/update',data)
 }
+
+export const sortMallCategory = (data) => {
+    return http.post('/mall/category/update/sort',data)
+}
