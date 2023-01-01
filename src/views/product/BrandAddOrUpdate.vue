@@ -41,7 +41,7 @@
 <script>
 
 import SingleUpload from "@/components/upload/singleUpload.vue"
-
+//
   export default {
     components: {SingleUpload:SingleUpload},
     data () {
