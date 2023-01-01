@@ -26,8 +26,9 @@ export default {
                                 {
                                     path: '/mall/category',
                                     name: 'classify',
+                                    icon: 'files',
                                     label: '分类维护',
-                                    url: 'mall/MallCategory.vue'
+                                    url: 'mall/Category.vue'
                                 }
                             ]
                         },

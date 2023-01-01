@@ -72,7 +72,7 @@
 <script>
 // 获取后端数据定义
 import {
-  addMallCategory, batchDelMallCategory,
+  addMallCategory,
   editMallCategory,
   findMallCategory,
   getMallCategory,
