@@ -1,16 +1,18 @@
 <template>
   <div class="mod-config">
-    <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
-      <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="true" type="primary" @click="addOrUpdateHandle()">新增</el-button>
-        <el-button v-if="true" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
-      </el-form-item>
-    </el-form>
-    <el-table
+    <div class="search-header">
+      <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
+        <el-form-item>
+          <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="getDataList()">查询</el-button>
+          <el-button v-if="true" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+          <el-button v-if="true" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <el-table class="common-table"
       :data="dataList"
       border
       v-loading="dataListLoading"
@@ -233,22 +235,22 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
   }
 </script>
 <style lang="less" scoped>
-//.mod-config{
-//  height: 90%;
-//  .manage-header {
-//    display: flex;
-//    justify-content: space-between;
-//    align-items: center;
-//  }
-//  .common-table {
-//    position: relative;
-//    height: calc(100% - 60px);
-//    .pager {
-//      position: absolute;
-//      bottom: 0px;
-//      right: 20px;
-//    }
-//  }
-//}
+.mod-config {
+  //height: 100%;
+  //.search-header {
+  //  display: flex;
+  //  justify-content: space-between;
+  //  align-items: center;
+  //}
+  .common-table {
+    //position: relative;
+    //height: calc(100% - 60px);
+    //.pager {
+    //  position: absolute;
+    //  bottom: 0px;
+    //  right: 20px;
+    //}
+  }
+}
 
 </style>
