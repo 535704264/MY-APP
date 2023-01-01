@@ -41,7 +41,7 @@
         label="品牌logo地址">
         <template slot-scope="scope">
           <el-image
-              style="width: 100px; height: 80px"
+              style="width: 100px; height: 65px"
               :src="scope.row.logo"
           fit="fill"></el-image>
           <!--<img :src="scope.row.logo" style="width: 100px; height: 80px" />-->
@@ -232,3 +232,23 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
     }
   }
 </script>
+<style lang="less" scoped>
+//.mod-config{
+//  height: 90%;
+//  .manage-header {
+//    display: flex;
+//    justify-content: space-between;
+//    align-items: center;
+//  }
+//  .common-table {
+//    position: relative;
+//    height: calc(100% - 60px);
+//    .pager {
+//      position: absolute;
+//      bottom: 0px;
+//      right: 20px;
+//    }
+//  }
+//}
+
+</style>
