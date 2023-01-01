@@ -20,9 +20,16 @@ export default {
                             // path: '/mall',
                             name: 'mall',
                             label: '商品管理',
-                            icon: 'video-play',
+                            icon: 'goods',
                             // url: 'mall/Mall.vue',
                             children: [
+                                {
+                                    path: '/mall/brand',
+                                    name: 'classify',
+                                    icon: 's-flag',
+                                    label: '品牌管理',
+                                    url: 'mall/Brand.vue'
+                                },
                                 {
                                     path: '/mall/category',
                                     name: 'classify',

@@ -8,11 +8,17 @@ import store from '@/store';
 // 后端请求，注释mock
 import './api/mock'
 import Cookie from "js-cookie";
+//
+import http from "@/utils/request";
 
 Vue.config.productionTip = false
 
 // 全局引入
 Vue.use(ElementUI)
+
+// 挂载全局 // ajax请求方法
+Vue.prototype.$http = http // ajax请求方法
+
 
 // 按需引入
 // Vue.use(Row)
