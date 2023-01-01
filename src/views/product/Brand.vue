@@ -135,6 +135,10 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
     activated () {
       this.getDataList()
     },
+    created() {
+      //获取所有的权限数据
+      this.getDataList()
+    },
     methods: {
       // 获取数据列表
       getDataList () {
