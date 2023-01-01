@@ -1,5 +1,9 @@
 <template>
   <div>
+    <el-switch v-model="draggable" active-text="开启拖拽" inactive-text="关闭拖拽"></el-switch>
+    <el-button v-if="draggable" @click="batchSave">批量保存</el-button>
+    <!--<el-button type="danger" >批量删除</el-button>-->
+    <!--@click="batchDelete"-->
     <el-tree
         show-checkbox
         node-key="catId"
@@ -7,7 +11,7 @@
         :props="defaultProps"
         :expand-on-click-node="false"
         :default-expanded-keys="expandedKey"
-        :draggable="true"
+        :draggable="draggable"
         :allow-drop="allowDrop"
         @node-drop="handleDrop">
 
@@ -78,9 +82,11 @@ import {
 export default {
   data() {
     return {
+      draggable : false,
       updateNodes:[],
       maxLevel: 0,
       title:"",
+      pCid:[],
       dialogFormVisible: false,
       menus: [],
       expandedKey: [],
@@ -272,7 +278,7 @@ export default {
         pCid = dropNode.data.catId;
         siblings = dropNode.childNodes;
       }
-      // this.pCid.push(pCid);
+      this.pCid.push(pCid);
 
       //2、当前拖拽节点的最新顺序，
       for (let i = 0; i < siblings.length; i++) {
@@ -299,22 +305,22 @@ export default {
       //3、当前拖拽节点的最新层级
       console.log("updateNodes", this.updateNodes);
       // 发送后端请求排序
-      sortMallCategory(this.updateNodes).then(()=>{
-        // console.log(data)
-        this.$message({
-          type: 'success',
-          message: '菜单顺序修改成功!'
-        });
-
-        // 刷新菜单
-        this.getMenus();
-        //
-
-        // 设置默认需要展开的菜单
-        this.expandedKey = [pCid]
-        this.updateNodes = []
-        this.maxLevel = 0;
-      })
+      // sortMallCategory(this.updateNodes).then(()=>{
+      //   // console.log(data)
+      //   this.$message({
+      //     type: 'success',
+      //     message: '菜单顺序修改成功!'
+      //   });
+      //
+      //   // 刷新菜单
+      //   this.getMenus();
+      //   //
+      //
+      //   // 设置默认需要展开的菜单
+      //   this.expandedKey = [pCid]
+      //   this.updateNodes = []
+      //   this.maxLevel = 0;
+      // })
 
     },
     updateChildNodeLevel(node) {
@@ -328,6 +334,21 @@ export default {
           this.updateChildNodeLevel(node.childNodes[i]);
         }
       }
+    },
+    batchSave() {
+      sortMallCategory(this.updateNodes).then(() => {
+        this.$message({
+          message: "菜单顺序批量修改成功",
+          type: "success"
+        });
+        //刷新出新的菜单
+        this.getMenus();
+        //设置需要默认展开的菜单
+        this.expandedKey = this.pCid;
+        this.updateNodes = [];
+        this.maxLevel = 0;
+        // this.pCid = 0;
+      });
     },
   },
   mounted() {
