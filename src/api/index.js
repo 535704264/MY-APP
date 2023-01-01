@@ -60,3 +60,4 @@ export const editMallCategory = (data) => {
 export const sortMallCategory = (data) => {
     return http.post('/mall/category/update/sort',data)
 }
+
