@@ -7,7 +7,7 @@
              background-color="#545c64"
              text-color="#fff"
              active-text-color="#ffd04b">
-      <h3>{{ isCollapse ? 'Demo':'管理系统Demo'}}</h3>
+      <h3>{{ isCollapse ? '麦子':'麦子商城后台'}}</h3>
       <!--  菜单   -->
       <el-menu-item  @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
