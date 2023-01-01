@@ -211,7 +211,7 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
         })
       },
       updateBrandStatus(data) {
-        console.log("最新信息", data);
+        // console.log("最新信息", data);
         let { brandId, showStatus } = data;
         //发送请求修改状态
         this.$http({
