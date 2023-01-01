@@ -72,12 +72,12 @@
 <script>
 // 获取后端数据定义
 import {
-  addMallCategory,
-  editMallCategory,
-  findMallCategory,
-  getMallCategory,
-  removeMallCategory,
-  sortMallCategory
+  addProductCategory,
+  editProductCategory,
+  findProductCategory,
+  getProductCategory,
+  removeProductCategory,
+  sortProductCategory
 } from '../../api'
 
 export default {
@@ -109,7 +109,7 @@ export default {
   methods: {
 
     getMenus() {
-      getMallCategory({params: {}}).then(({data}) => {
+      getProductCategory({params: {}}).then(({data}) => {
         // console.log(data)
         // 打印完整返回str
         // console.log(JSON.stringify(data))
@@ -141,7 +141,7 @@ export default {
       }).then(() => {
         //
         var ids = [data.catId]
-        removeMallCategory(ids).then(({data}) => {
+        removeProductCategory(ids).then(({data}) => {
           console.log(data)
           this.$message({
             type: 'success',
@@ -161,7 +161,7 @@ export default {
     addCategory() {
       // 提交三级表单分类数据
       console.log("提交三级表单分类数据", this.category)
-      addMallCategory(this.category).then(()=>{
+      addProductCategory(this.category).then(()=>{
         this.$message({
           type: 'success',
           message: '菜单保存成功!'
@@ -181,7 +181,7 @@ export default {
       var data = {catId: catId, name: name, icon: icon, productUnit: productUnit}
       // 修改全量数据
       // var data = this.category
-      editMallCategory(data).then((data)=>{
+      editProductCategory(data).then((data)=>{
         console.log(data)
         this.$message({
           type: 'success',
@@ -202,7 +202,7 @@ export default {
       this.dialogFormVisible = true
 
       // 发送请求获取当前节点最新数据
-      findMallCategory(data.catId).then((_data)=>{
+      findProductCategory(data.catId).then((_data)=>{
         console.log(_data)
         this.category.name = _data.data.data.name
         this.category.catId = _data.data.data.catId
@@ -337,7 +337,7 @@ export default {
       }
     },
     batchSave() {
-      sortMallCategory(this.updateNodes).then(() => {
+      sortProductCategory(this.updateNodes).then(() => {
         this.$message({
           message: "菜单顺序批量修改成功",
           type: "success"
@@ -376,7 +376,7 @@ export default {
             //   this.getMenus();
             // });
 
-        removeMallCategory(catIds).then(({data}) => {
+        removeProductCategory(catIds).then(({data}) => {
           console.log(data)
           this.$message({
             type: 'success',

@@ -35,29 +35,29 @@ export const getMenu = (data) => {
 
 
 
-export const getMallCategory = (params) => {
-    return http.get('/mall/category/list/tree',params)
+export const getProductCategory = (params) => {
+    return http.get('/product/category/list/tree',params)
 }
 
-export const removeMallCategory = (params) => {
-    return http.post('/mall/category/delete',params)
-}
-
-
-export const addMallCategory = (data) => {
-    return http.post('/mall/category/save',data)
+export const removeProductCategory = (params) => {
+    return http.post('/product/category/delete',params)
 }
 
 
-export const findMallCategory = (id) => {
-    return http.get(`/mall/category/info/${id}`)
+export const addProductCategory = (data) => {
+    return http.post('/product/category/save',data)
 }
 
-export const editMallCategory = (data) => {
-    return http.post('/mall/category/update',data)
+
+export const findProductCategory = (id) => {
+    return http.get(`/product/category/info/${id}`)
 }
 
-export const sortMallCategory = (data) => {
-    return http.post('/mall/category/update/sort',data)
+export const editProductCategory = (data) => {
+    return http.post('/product/category/update',data)
+}
+
+export const sortProductCategory = (data) => {
+    return http.post('/product/category/update/sort',data)
 }
 

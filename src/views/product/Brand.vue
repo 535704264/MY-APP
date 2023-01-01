@@ -132,7 +132,7 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
       getDataList () {
         this.dataListLoading = true
         this.$http({
-          url: this.$http.adornUrl('/mall/brand/list'),
+          url: this.$http.adornUrl('/product/brand/list'),
           method: 'get',
           params: this.$http.adornParams({
             'page': this.pageIndex,
@@ -183,7 +183,7 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
           type: 'warning'
         }).then(() => {
           this.$http({
-            url: this.$http.adornUrl('/mall/brand/delete'),
+            url: this.$http.adornUrl('/product/brand/delete'),
             method: 'post',
             data: this.$http.adornData(ids, false)
           }).then(({data}) => {
@@ -207,7 +207,7 @@ import AddOrUpdate from './BrandAddOrUpdate.vue'
         let { brandId, showStatus } = data;
         //发送请求修改状态
         this.$http({
-          url: this.$http.adornUrl("/mall/brand/update/status"),
+          url: this.$http.adornUrl("/product/brand/update/status"),
           method: "post",
           data: this.$http.adornData({ brandId, showStatus }, false)
         }).then(() => {

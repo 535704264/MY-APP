@@ -46,8 +46,8 @@ export default {
       //     url: 'Home/Home'
       //   },
       //   {
-      //     path: '/mall',
-      //     name: 'mall',
+      //     path: '/product',
+      //     name: 'product',
       //     label: '商品管理',
       //     icon: 'video-play',
       //     url: 'MallManage/MallManage'

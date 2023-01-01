@@ -17,25 +17,25 @@ export default {
                             url: 'home/Home.vue'
                         },
                         {
-                            // path: '/mall',
-                            name: 'mall',
+                            // path: '/product',
+                            name: 'product',
                             label: '商品管理',
                             icon: 'goods',
-                            // url: 'mall/Mall.vue',
+                            // url: 'product/Mall.vue',
                             children: [
                                 {
-                                    path: '/mall/brand',
+                                    path: '/product/brand',
                                     name: 'classify',
                                     icon: 's-flag',
                                     label: '品牌管理',
-                                    url: 'mall/Brand.vue'
+                                    url: 'product/Brand.vue'
                                 },
                                 {
-                                    path: '/mall/category',
+                                    path: '/product/category',
                                     name: 'classify',
                                     icon: 'files',
                                     label: '分类维护',
-                                    url: 'mall/Category.vue'
+                                    url: 'product/Category.vue'
                                 }
                             ]
                         },
@@ -84,8 +84,8 @@ export default {
                             url: 'home/Home.vue'
                         },
                         {
-                            path: '/mall',
-                            name: 'mall',
+                            path: '/product',
+                            name: 'product',
                             label: '商品管理',
                             icon: 'video-play',
                             url: 'mall/Mall.vue'
