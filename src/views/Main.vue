@@ -28,7 +28,7 @@
 <script>
 import CommonAside from "@/layout/CommonAside";
 import CommonHeader from "@/layout/CommonHeader";
-import CommonTag from  "@/components/CommonTag";
+import CommonTag from "@/layout/CommonTag.vue";
 
 // 主路由
 export default {
