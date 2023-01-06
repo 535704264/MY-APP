@@ -4,7 +4,8 @@
         node-key="catId"
         :data="menus"
         :props="defaultProps"
-        ref="menuTree">
+        ref="menuTree"
+        @node-click="nodeclick">
 
     </el-tree>
   </div>
@@ -30,9 +31,7 @@ export default {
     };
   },
   //监听属性 类似于data概念",
-  computed: {
-
-  },
+  computed: {},
   //监控data中的数据变化",
   watch: {},
   //方法集合",
@@ -46,6 +45,11 @@ export default {
         this.menus = data.data
       })
     },
+    nodeclick(data, node, component){
+      // console.log("子组件category的节点被点击", data, node, component)
+      // 向父组件发送事件
+      this.$emit("tree-node-click", data, node, component)
+    }
   },
   //生命周期 - 创建之前",数据模型未加载,方法未加载,html模板未加载
   beforeCreate() {
