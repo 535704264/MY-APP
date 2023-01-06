@@ -35,7 +35,14 @@ export default {
                                     name: 'classify',
                                     icon: 'files',
                                     label: '分类维护',
-                                    url: 'product/Category.vue'
+                                    url: 'product/Category.vue',
+                                },
+                                {
+                                    path: '/product/categoryGroup',
+                                    name: 'classify',
+                                    icon: 'attract',
+                                    label: '属性分组',
+                                    url: 'product/Attrgroup.vue'
                                 }
                             ]
                         },
