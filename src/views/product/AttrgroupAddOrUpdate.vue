@@ -3,7 +3,8 @@
   <el-dialog
     :title="!dataForm.attrGroupId ? '新增' : '修改'"
     :close-on-click-modal="false"
-    :visible.sync="visible">
+    :visible.sync="visible"
+     @close="dialogClose">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
     <el-form-item label="组名" prop="attrGroupName">
       <el-input v-model="dataForm.attrGroupName" placeholder="组名"></el-input>
@@ -18,7 +19,13 @@
       <el-input v-model="dataForm.icon" placeholder="组图标"></el-input>
     </el-form-item>
     <el-form-item label="所属分类id" prop="catelogId">
-      <el-input v-model="dataForm.catelogId" placeholder="所属分类id"></el-input>
+      <!--<el-input v-model="dataForm.catelogId" placeholder="所属分类id"></el-input>-->
+      <!--选择器-->
+      <el-cascader
+          filterable
+          placeholder="试试搜索：手机"
+          v-model="dataForm.catelogPath"
+          :options="categorys" :props="props"></el-cascader>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -29,9 +36,17 @@
 </template>
 
 <script>
+  import {getProductCategory} from "@/api";
+
   export default {
     data () {
       return {
+        props:{
+            value: "catId",
+            label: "name",
+            children: "children"
+        },
+        categorys:[],
         visible: false,
         dataForm: {
           attrGroupId: 0,
@@ -39,7 +54,8 @@
           sort: '',
           descript: '',
           icon: '',
-          catelogId: ''
+          catelogPath: [],
+          catelogId: 0
         },
         dataRule: {
           attrGroupName: [
@@ -61,6 +77,18 @@
       }
     },
     methods: {
+      dialogClose() {
+        this.dataForm.catelogPath = []
+      },
+      getCategorys() {
+        getProductCategory({params: {}}).then(({data}) => {
+          // console.log(data)
+          // 打印完整返回str
+          // console.log(JSON.stringify(data))
+          // 渲染数据
+          this.categorys = data.data
+        })
+      },
       init (id) {
         this.dataForm.attrGroupId = id || 0
         this.visible = true
@@ -78,6 +106,8 @@
                 this.dataForm.descript = data.attrGroup.descript
                 this.dataForm.icon = data.attrGroup.icon
                 this.dataForm.catelogId = data.attrGroup.catelogId
+                // 查出catelogId的完整路径
+                this.dataForm.catelogPath = data.attrGroup.catelogPath
               }
             })
           }
@@ -96,7 +126,7 @@
                 'sort': this.dataForm.sort,
                 'descript': this.dataForm.descript,
                 'icon': this.dataForm.icon,
-                'catelogId': this.dataForm.catelogId
+                'catelogId': this.dataForm.catelogPath[this.dataForm.catelogPath.length-1]
               })
             }).then(({data}) => {
               if (data && data.code === 0) {
@@ -116,6 +146,9 @@
           }
         })
       }
+    },
+    created() {
+      this.getCategorys()
     }
   }
 </script>
