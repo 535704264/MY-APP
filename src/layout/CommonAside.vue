@@ -7,20 +7,20 @@
              background-color="#545c64"
              text-color="#fff"
              active-text-color="#ffd04b">
-      <h3>{{ isCollapse ? '麦子':'麦子商城后台'}}</h3>
-      <!--  菜单   -->
-      <el-menu-item  @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
+      <h3>{{ isCollapse ? '麦子' : '麦子商城后台' }}</h3>
+      <!--  一级菜单   -->
+      <el-menu-item @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
-      <!--  子菜单   -->
+      <!--  二级菜单   -->
       <el-submenu v-for="item in hasChild" :key="item.label" :index="item.label">
         <template slot="title">
           <i :class="`el-icon-${item.icon}`"></i>
           <span slot="title">{{ item.label }}</span>
         </template>
         <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-          <el-menu-item  @click="clickMenu(subItem)" :index="subItem.path">
+          <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">
             <i :class="`el-icon-${subItem.icon}`"></i>
             <span slot="title">{{ subItem.label }}</span>
           </el-menu-item>
@@ -33,6 +33,7 @@
 
 <script>
 import Cookie from "js-cookie";
+
 export default {
   data() {
     return {
@@ -102,7 +103,7 @@ export default {
         this.$router.push(item.path)
       }
       // 面包屑
-      this.$store.commit('selectMenu',item)
+      this.$store.commit('selectMenu', item)
       //
 
     }
@@ -134,9 +135,10 @@ export default {
 <style lang="less" scoped>
 //
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;  // 导航宽度
+  width: 200px; // 导航宽度
   min-height: 400px; // 最小高度
 }
+
 //
 .el-menu {
   height: 100vh; //vh与浏览器高度一致
@@ -147,6 +149,7 @@ export default {
     font-size: 16px;
     font-weight: 400;
   }
+
   border-right: none;
 }
 

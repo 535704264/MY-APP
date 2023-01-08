@@ -19,7 +19,7 @@ export default {
                         {
                             // path: '/product',
                             name: 'product',
-                            label: '商品管理',
+                            label: '商品系统',
                             icon: 'goods',
                             // url: 'product/Mall.vue',
                             children: [
@@ -62,7 +62,16 @@ export default {
                                     name: 'page1',
                                     label: '页面1',
                                     icon: 'setting',
-                                    url: 'pageOne/PageOne.vue'
+                                    url: 'pageOne/PageOne.vue',
+                                    children: [
+                                        {
+                                            path: '/page1-2',
+                                            name: 'page1-2',
+                                            label: '页面1-2',
+                                            icon: 'setting',
+                                            url: 'pageTwo/PageTwo.vue'
+                                        }
+                                    ]
                                 },
                                 {
                                     path: '/page2',
