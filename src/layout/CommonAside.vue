@@ -8,12 +8,12 @@
              text-color="#fff"
              active-text-color="#ffd04b">
       <h3>{{ isCollapse ? '麦子' : '麦子商城后台' }}</h3>
-      <!--  一级菜单   -->
+      <!--  没有子菜单   -->
       <el-menu-item @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
-      <!--  二级菜单   -->
+      <!--  有子菜单   -->
       <el-submenu v-for="item in hasChild" :key="item.label" :index="item.label">
         <template slot="title">
           <i :class="`el-icon-${item.icon}`"></i>
