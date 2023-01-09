@@ -19,25 +19,27 @@
           <i :class="`el-icon-${item.icon}`"></i>
           <span slot="title">{{ item.label }}</span>
         </template>
-        <el-menu-item-group v-for="subItem in item.children" >
+        <!--<el-menu-item-group v-for="subItem in item.children" >-->
+        <div  v-for="(subItem, index) in item.children" :key="index">
           <!-- 判断二级菜单（没有三级菜单）-->
-          <el-menu-item  @click="clickMenu(subItem)" :index="subItem.name" :key="subItem.name" v-if="!subItem.children">
+          <el-menu-item  @click="clickMenu(subItem)" v-if="!subItem.children" :index="subItem.name" :key="subItem.name" >
             <i :class="`el-icon-${subItem.icon}`"></i>
             <span slot="title">{{ subItem.label }}</span>
           </el-menu-item>
 
           <!-- 判断二级菜单（有三级菜单）-->
-          <el-submenu :index="subItem.label"  v-if="subItem.children">
+          <el-submenu   v-if="subItem.children" :index="subItem.label"  :key="subItem.label">
             <template slot="title">
               <i :class="`el-icon-${subItem.icon}`"></i>
               <span slot="title">{{ subItem.label }}</span>
             </template>
-            <el-menu-item @click="clickMenu(j)" :index="j.label" v-for="j in subItem.children" :key="j.path">
+            <el-menu-item @click="clickMenu(j)"  v-for="j in subItem.children" :index="j.name" :key="j.name">
               <i :class="`el-icon-${j.icon}`"></i>
               <span slot="title">{{ j.label }}</span>
             </el-menu-item>
           </el-submenu>
-        </el-menu-item-group>
+        </div>
+        <!--</el-menu-item-group>-->
       </el-submenu>
     </el-menu>
   </div>
