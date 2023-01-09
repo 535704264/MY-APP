@@ -8,22 +8,35 @@
              text-color="#fff"
              active-text-color="#ffd04b">
       <h3>{{ isCollapse ? '麦子' : '麦子商城后台' }}</h3>
-      <!--  没有子菜单   -->
+      <!--  一级菜单没有子菜单   -->
       <el-menu-item @click="clickMenu(item)" v-for="item in noChild" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
-      <!--  有子菜单   -->
+      <!--  一级菜单有子菜单   -->
       <el-submenu v-for="item in hasChild" :key="item.label" :index="item.label">
         <template slot="title">
           <i :class="`el-icon-${item.icon}`"></i>
           <span slot="title">{{ item.label }}</span>
         </template>
-        <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-          <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">
+        <el-menu-item-group v-for="subItem in item.children" >
+          <!-- 判断二级菜单（没有三级菜单）-->
+          <el-menu-item  @click="clickMenu(subItem)" :index="subItem.name" :key="subItem.name" v-if="!subItem.children">
             <i :class="`el-icon-${subItem.icon}`"></i>
             <span slot="title">{{ subItem.label }}</span>
           </el-menu-item>
+
+          <!-- 判断二级菜单（有三级菜单）-->
+          <el-submenu :index="subItem.label"  v-if="subItem.children">
+            <template slot="title">
+              <i :class="`el-icon-${subItem.icon}`"></i>
+              <span slot="title">{{ subItem.label }}</span>
+            </template>
+            <el-menu-item @click="clickMenu(j)" :index="j.label" v-for="j in subItem.children" :key="j.path">
+              <i :class="`el-icon-${j.icon}`"></i>
+              <span slot="title">{{ j.label }}</span>
+            </el-menu-item>
+          </el-submenu>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -95,7 +108,7 @@ export default {
     },
     // 点击菜单方法
     clickMenu(item) {
-      // console.log(item)
+      console.log("当前点击菜单", item)
       // 当页面当路由和跳转的路由不一致才允许跳转
       // this.$route表示当前路由
       if (this.$route.path !== item.path && !(this.$route.path === '/home' && (item.path === '/'))) {

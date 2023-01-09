@@ -24,13 +24,6 @@ export default {
                             // url: 'product/Mall.vue',
                             children: [
                                 {
-                                    path: '/product/brand',
-                                    name: 'classify',
-                                    icon: 's-flag',
-                                    label: '品牌管理',
-                                    url: 'product/Brand.vue'
-                                },
-                                {
                                     path: '/product/category',
                                     name: 'classify',
                                     icon: 'files',
@@ -38,12 +31,29 @@ export default {
                                     url: 'product/Category.vue',
                                 },
                                 {
-                                    path: '/product/categoryGroup',
+                                    path: '/product/brand',
                                     name: 'classify',
-                                    icon: 'attract',
-                                    label: '属性分组',
-                                    url: 'product/Attrgroup.vue'
-                                }
+                                    icon: 's-flag',
+                                    label: '品牌管理',
+                                    url: 'product/Brand.vue'
+                                },
+                                {
+                                    // todo 有子菜单去掉 path和url
+                                    path: '/product/platformAttr',
+                                    name: 'classify',
+                                    icon: 'files',
+                                    label: '平台属性',
+                                    url: 'product/platformAttr.vue',
+                                    children: [
+                                        {
+                                            path: '/product/Attrgroup',
+                                            name: 'classify',
+                                            icon: 'attract',
+                                            label: '属性分组',
+                                            url: '/product/Attrgroup.vue'
+                                        }
+                                    ]
+                                },
                             ]
                         },
                         {
