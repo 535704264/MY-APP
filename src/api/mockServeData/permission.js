@@ -43,7 +43,7 @@ export default {
                                     name: 'classify',
                                     icon: 'files',
                                     label: '平台属性',
-                                    url: 'product/platformAttr.vue',
+                                    url: '/product/Attrgroup.vue',
                                     children: [
                                         {
                                             path: '/product/Attrgroup',
