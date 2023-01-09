@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form  class="login_container"  :model="login" status-icon :rules="rules" ref="login" label-width="70px">
+    <el-form class="login_container" :model="login" status-icon :rules="rules" ref="login" label-width="70px">
       <!-- h3要放在里面:只能有一个根,且title也是表单的一部分 -->
       <h3 class="login_title">用户登录</h3>
       <!-- prop对应rules里的键 -->
@@ -53,34 +53,33 @@ export default {
 
       // 生产
       // form 表单校验通过
-      this.$refs.login.validate((valid)=>{
+      this.$refs.login.validate((valid) => {
         //console.log(valid, 'valid')
         if (valid) {
           // 获取菜单
-          getMenu(this.login).then(({data})=>{
-            // console.log(data)
-            if(data.code===20000){
-              // 记录cookie
-              Cookie.set('token',data.data.token)
+          getMenu(this.login).then(({data}) => {
+                // console.log(data)
+                if (data.code === 20000) {
+                  // 记录cookie
+                  Cookie.set('token', data.data.token)
 
-              // 获取菜单的数据，存入store中
-              //
-              this.$store.commit('setMenu',data.data.menu)
-              // 路径重复问题 Duplicate named xxxxx
-              this.$store.commit('addMenu',this.$router)
-              //    跳转到首页
-              this.$router.push('/home')
-            } else {
-              // 验证失败的弹窗
-              this.$message.error(data.data.message);
-            }
-            // 当前登陆人
-            // console.log(this.login.username)
-            // 登陆成功放用户信息放到Cookie里面
-            this.$store.commit('setUserInfo',this.login.username)
+                  // 获取菜单的数据，存入store中
+                  //
+                  this.$store.commit('setMenu', data.data.menu)
+                  // todo 路径重复问题 Duplicate named xxxxx
+                  this.$store.commit('addMenu', this.$router)
+                  // 跳转到首页
+                  this.$router.push('/home')
+                } else {
+                  // 验证失败的弹窗
+                  this.$message.error(data.data.message);
+                }
+                // 当前登陆人
+                // console.log(this.login.username)
+                // 登陆成功放用户信息放到Cookie里面
+                this.$store.commit('setUserInfo', this.login.username)
 
-          }
-
+              }
           )
         }
       })

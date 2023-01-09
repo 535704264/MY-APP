@@ -54,7 +54,7 @@ export default {
                                         },
                                         {
                                             path: '/product/BaseAttr',
-                                            name: 'Attrgroup',
+                                            name: 'BaseAttr',
                                             icon: 'attract',
                                             label: '规格参数',
                                             url: 'product/BaseAttr.vue'
