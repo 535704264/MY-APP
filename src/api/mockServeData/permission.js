@@ -43,7 +43,7 @@ export default {
                                     name: 'platformAttr',
                                     icon: 'files',
                                     label: '平台属性',
-                                    url: 'product/Attrgroup.vue',
+                                    url: 'product/BaseAttr.vue',
                                     children: [
                                         {
                                             path: '/product/Attrgroup',
