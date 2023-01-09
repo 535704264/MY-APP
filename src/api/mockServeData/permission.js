@@ -25,14 +25,14 @@ export default {
                             children: [
                                 {
                                     path: '/product/category',
-                                    name: 'classify',
+                                    name: 'category',
                                     icon: 'files',
                                     label: '分类维护',
                                     url: 'product/Category.vue',
                                 },
                                 {
                                     path: '/product/brand',
-                                    name: 'classify',
+                                    name: 'brand',
                                     icon: 's-flag',
                                     label: '品牌管理',
                                     url: 'product/Brand.vue'
@@ -40,17 +40,17 @@ export default {
                                 {
                                     // todo 有子菜单去掉 path和url
                                     path: '/product/platformAttr',
-                                    name: 'classify',
+                                    name: 'platformAttr',
                                     icon: 'files',
                                     label: '平台属性',
-                                    url: '/product/Attrgroup.vue',
+                                    url: 'product/Attrgroup.vue',
                                     children: [
                                         {
                                             path: '/product/Attrgroup',
-                                            name: 'classify',
+                                            name: 'Attrgroup',
                                             icon: 'attract',
                                             label: '属性分组',
-                                            url: '/product/Attrgroup.vue'
+                                            url: 'product/Attrgroup.vue'
                                         }
                                     ]
                                 },
