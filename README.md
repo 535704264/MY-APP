@@ -40,3 +40,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1、A用户登出，再次登陆会报路由重复
 2、A用户登出，B用户登入还保留着A用户的面包屑
 3、改为三级菜单后，定义的二级菜单url和path去不掉，面包屑层级也不对
+4、动态路由添加有问题 tab.js
