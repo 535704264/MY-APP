@@ -14,6 +14,7 @@
             </el-form-item>
             <el-form-item>
               <el-button @click="getDataList()">查询</el-button>
+              <el-button type="success" @click="getAllDataList()">查询全部</el-button>
               <el-button  type="primary" @click="addOrUpdateHandle()">新增</el-button>
               <el-button  type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
             </el-form-item>
@@ -74,6 +75,7 @@
                 width="150"
                 label="操作">
               <template slot-scope="scope">
+                <el-button type="text" size="small" @click="relationHandle(scope.row.attrGroupId)">关联</el-button>
                 <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.attrGroupId)">修改</el-button>
                 <el-button type="text" size="small" @click="deleteHandle(scope.row.attrGroupId)">删除</el-button>
               </template>
@@ -91,6 +93,8 @@
           </el-pagination>
           <!-- 弹窗, 新增 / 修改 -->
           <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
+          <!-- 修改关联关系 -->
+          <relation-update v-if="relationVisible" ref="relationUpdate" @refreshData="getDataList"></relation-update>
         </div>
       </el-col>
     </el-row>
@@ -112,11 +116,14 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import Category from "../common/Category.vue"
 import AddOrUpdate from "./AttrgroupAddOrUpdate.vue"
+import RelationUpdate from "./AttrGroupRelation";
+
 export default {
   //import引入的组件需要注入到对象中才能使用",
   components: {
     Category: Category,
-    AddOrUpdate: AddOrUpdate
+    AddOrUpdate: AddOrUpdate,
+    RelationUpdate:RelationUpdate
   },
   data() {
     //这里存放数据",
@@ -131,7 +138,9 @@ export default {
       totalPage: 0,
       dataListLoading: false,
       dataListSelections: [],
-      addOrUpdateVisible: false
+      addOrUpdateVisible: false,
+      relationVisible: false
+
     };
   },
   //监听属性 类似于data概念",
@@ -228,6 +237,17 @@ export default {
           }
         })
       })
+    },
+    getAllDataList() {
+      // 查询全部
+      this.catId = 0;
+      this.getDataList();
+    },
+    relationHandle(groupId) {
+      this.relationVisible = true;
+      this.$nextTick(() => {
+        this.$refs.relationUpdate.init(groupId);
+      });
     }
   },
   //生命周期 - 创建之前",数据模型未加载,方法未加载,html模板未加载
