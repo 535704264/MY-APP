@@ -19,7 +19,6 @@
           <i :class="`el-icon-${item.icon}`"></i>
           <span slot="title">{{ item.label }}</span>
         </template>
-        <!--<el-menu-item-group v-for="subItem in item.children" >-->
         <div  v-for="(subItem, index) in item.children" :key="index">
           <!-- 判断二级菜单（没有三级菜单）-->
           <el-menu-item  @click="clickMenu(subItem)" v-if="!subItem.children" :index="subItem.name" :key="subItem.name" >
@@ -39,7 +38,6 @@
             </el-menu-item>
           </el-submenu>
         </div>
-        <!--</el-menu-item-group>-->
       </el-submenu>
     </el-menu>
   </div>
