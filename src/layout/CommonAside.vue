@@ -113,7 +113,7 @@ export default {
       // this.$route表示当前路由
       if (this.$route.path !== item.path && !(this.$route.path === '/home' && (item.path === '/'))) {
         // $router当前$router实例
-        console.log("当前目标路由", item.path)
+        // console.log("当前目标路由", item.path)
         this.$router.push(item.path)
       }
       // 面包屑
