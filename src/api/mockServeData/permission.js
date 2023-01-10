@@ -72,6 +72,13 @@ export default {
                                     label: '商品维护',
                                     children: [
                                         {
+                                            path: '/product/Spu',
+                                            name: 'Spu',
+                                            icon: 'attract',
+                                            label: 'spu管理',
+                                            url: 'product/Spu.vue'
+                                        },
+                                        {
                                             path: '/product/SpuAdd',
                                             name: 'Publish',
                                             icon: 'attract',

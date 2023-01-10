@@ -11,6 +11,8 @@ import Cookie from "js-cookie";
 //
 import http from "@/utils/request";
 
+import PubSub from "pubsub-js"
+
 Vue.config.productionTip = false
 
 // 全局引入
@@ -18,6 +20,8 @@ Vue.use(ElementUI)
 
 // 挂载全局 // ajax请求方法
 Vue.prototype.$http = http // ajax请求方法
+// 全局引用PubSub
+Vue.prototype.PubSub = PubSub
 
 
 // 按需引入

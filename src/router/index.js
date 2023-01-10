@@ -7,7 +7,8 @@ import Main from '../views/Main.vue';
 // import PageOne from "../views/pageOne/PageOne.vue";
 // import PageTwo from "../views/pageTwo/PageTwo.vue";
 import Login from "../views/login/Login.vue";
-
+// import PageTwo from "../views/pageTwo/PageTwo.vue";
+import AttrUpdate from "../views/product/AttrUpdate.vue";
 
 
 // 1、创建路由组件
@@ -32,6 +33,11 @@ const routes = [
         path: "/login",
         name: "login",
         component: Login
+    },
+    {
+        path: '/product/AttrUpdate',
+        component: AttrUpdate,
+        name: 'attr-update', meta: { title: '规格维护', isTab: true }
     }
 ]
 
