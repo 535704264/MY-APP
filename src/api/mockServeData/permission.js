@@ -58,7 +58,7 @@ export default {
                                         },
                                         {
                                             path: '/product/SaleAttr',
-                                            name: 'BaseAttr',
+                                            name: 'SaleAttr',
                                             icon: 'attract',
                                             label: '销售属性',
                                             url: 'product/SaleAttr.vue'
@@ -68,9 +68,43 @@ export default {
                             ]
                         },
                         {
+                            name: 'member',
+                            label: '用户系统',
+                            icon: 's-custom',
+                            children: [
+                                // {
+                                //     path: '/member/list',
+                                //     name: 'MemberList',
+                                //     icon: 'crop',
+                                //     label: '会员列表',
+                                //     url: 'member/list.vue'
+                                // },
+                                {
+                                    path: '/member/Level',
+                                    name: 'MemberLevel',
+                                    icon: 'medal',
+                                    label: '会员等级',
+                                    url: 'member/Level.vue'
+                                },
+                                // {
+                                //     path: '/member/change',
+                                //     name: 'MemberChange',
+                                //     icon: 'heavy-rain',
+                                //     label: '积分变化',
+                                //     url: 'member/change.vue'
+                                // },{
+                                //     path: '/member/stat',
+                                //     name: 'MemberStat',
+                                //     icon: 'files',
+                                //     label: '统计信息',
+                                //     url: 'member/stat.vue'
+                                // },
+                            ]
+                        },
+                        {
                             path: '/user',
                             name: 'user',
-                            label: '用户管理',
+                            label: '用户管理DEMO',
                             icon: 'user',
                             url: 'user/User.vue'
                         },
