@@ -38,12 +38,9 @@ export default {
                                     url: 'product/Brand.vue'
                                 },
                                 {
-                                    // todo 有子菜单去掉 path和url
-                                    path: '/product/platformAttr',
                                     name: 'platformAttr',
                                     icon: 'files',
                                     label: '平台属性',
-                                    url: 'product/BaseAttr.vue',
                                     children: [
                                         {
                                             path: '/product/Attrgroup',
