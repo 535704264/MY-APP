@@ -56,6 +56,13 @@ export default {
                                             label: '规格参数',
                                             url: 'product/BaseAttr.vue'
                                         },
+                                        {
+                                            path: '/product/SaleAttr',
+                                            name: 'BaseAttr',
+                                            icon: 'attract',
+                                            label: '销售属性',
+                                            url: 'product/SaleAttr.vue'
+                                        },
                                     ]
                                 },
                             ]
