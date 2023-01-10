@@ -65,6 +65,21 @@ export default {
                                         },
                                     ]
                                 },
+                                {
+                                    path: '/product/maintain',
+                                    name: 'maintain',
+                                    icon: 's-flag',
+                                    label: '商品维护',
+                                    children: [
+                                        {
+                                            path: '/product/SpuAdd',
+                                            name: 'Publish',
+                                            icon: 'attract',
+                                            label: '发布商品',
+                                            url: 'product/SpuAdd.vue'
+                                        },
+                                    ]
+                                },
                             ]
                         },
                         {
