@@ -105,29 +105,37 @@ export default {
                                 {
                                     path: '/ware/WareInfo',
                                     name: 'WareInfo',
-                                    icon: 'attract',
+                                    icon: 'refrigerator',
                                     label: '仓库维护',
                                     url: 'ware/WareInfo.vue'
                                 },
                                 {
                                     path: '/ware/Sku',
                                     name: 'wareSku',
-                                    icon: 'attract',
+                                    icon: 'ice-tea',
                                     label: '商品库存',
                                     url: 'ware/Sku.vue'
                                 },
                                 {
-                                    name: 'Purchase',
-                                    icon: 'attract',
+                                    // path: "/ware/PurchaseMaintain",
+                                    name: 'PurchaseMaintain',
+                                    icon: 'fork-spoon',
                                     label: '采购单维护',
                                     children: [
                                         {
                                             path: '/ware/Purchase',
-                                            name: 'Purchase',
-                                            icon: 'attract',
+                                            name: 'PurchaseInfo',
+                                            icon: 'wallet',
                                             label: '采购需求',
                                             url: 'ware/Purchase.vue'
-                                        }
+                                        },
+                                        // {
+                                        //     path: '/ware/PurchaseItem',
+                                        //     name: 'PurchaseItem',
+                                        //     icon: 'brush',
+                                        //     label: '采购需求',
+                                        //     url: 'ware/PurchaseItem.vue'
+                                        // }
                                     ]
                                 },
 
@@ -137,7 +145,7 @@ export default {
                         {
                             name: 'member',
                             label: '用户系统',
-                            icon: 's-custom',
+                            icon: 's-promotion',
                             children: [
                                 // {
                                 //     path: '/member/list',
