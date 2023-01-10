@@ -108,7 +108,7 @@ export default {
     },
     // 点击菜单方法
     clickMenu(item) {
-      console.log("当前点击菜单", item)
+      // console.log("当前点击菜单", item)
       // 当页面当路由和跳转的路由不一致才允许跳转
       // this.$route表示当前路由
       if (this.$route.path !== item.path && !(this.$route.path === '/home' && (item.path === '/'))) {

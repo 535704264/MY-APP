@@ -256,7 +256,8 @@ export default {
 
   //生命周期 - 创建完成（可以访问当前this实例）",数据模型已加载，方法已加载,html模板已加载,html模板未渲染
   created() {
-
+   // 获取所有的权限数据
+    this.getDataList()
   },
   //生命周期 - 挂载之前",html模板未渲染
   beforeMount() {

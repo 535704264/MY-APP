@@ -154,6 +154,9 @@ export default {
   activated() {
     this.getDataList();
   },
+  created() {
+    this.getDataList()
+  },
   methods: {
     //感知树节点被点击
     treenodeclick(data, node, component) {
