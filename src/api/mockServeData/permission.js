@@ -98,6 +98,21 @@ export default {
                             ]
                         },
                         {
+                            name: 'ware',
+                            label: '库存系统',
+                            icon: 's-custom',
+                            children: [
+                                {
+                                    path: '/ware/WareInfo',
+                                    name: 'Manager',
+                                    icon: 'attract',
+                                    label: '仓库维护',
+                                    url: 'ware/WareInfo.vue'
+                                },
+
+                            ]
+                        },
+                        {
                             name: 'member',
                             label: '用户系统',
                             icon: 's-custom',
