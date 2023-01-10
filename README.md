@@ -41,4 +41,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 2、A用户登出，B用户登入还保留着A用户的面包屑
 3、改为三级菜单后，面包屑层级不对
 4、商品维护-spu管理-规格按钮未正常实现功能
+5、商品管理-更多-跳转商品库存，页面没有带参数显示skuID，activated方法没执行
 

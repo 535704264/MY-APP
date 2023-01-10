@@ -132,9 +132,9 @@ export default {
     },
     //处理更多指令
     handleCommand(row, command) {
-      console.log("~~~~~", row, command);
-      if ("stockSettings" == command) {
-        this.$router.push({ path: "/ware-sku", query: { skuId: row.skuId } });
+      // console.log("~~~~~", row, command);
+      if ("stockSettings" === command) {
+        this.$router.push({ path: "/ware/Sku", query: { skuId: row.skuId } });
       }
     },
     searchSkuInfo() {

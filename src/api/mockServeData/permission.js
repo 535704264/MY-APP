@@ -104,11 +104,33 @@ export default {
                             children: [
                                 {
                                     path: '/ware/WareInfo',
-                                    name: 'Manager',
+                                    name: 'WareInfo',
                                     icon: 'attract',
                                     label: '仓库维护',
                                     url: 'ware/WareInfo.vue'
                                 },
+                                {
+                                    path: '/ware/Sku',
+                                    name: 'wareSku',
+                                    icon: 'attract',
+                                    label: '商品库存',
+                                    url: 'ware/Sku.vue'
+                                },
+                                {
+                                    name: 'Purchase',
+                                    icon: 'attract',
+                                    label: '采购单维护',
+                                    children: [
+                                        {
+                                            path: '/ware/Purchase',
+                                            name: 'Purchase',
+                                            icon: 'attract',
+                                            label: '采购需求',
+                                            url: 'ware/Purchase.vue'
+                                        }
+                                    ]
+                                },
+
 
                             ]
                         },
