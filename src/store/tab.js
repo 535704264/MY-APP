@@ -49,10 +49,24 @@ export default {
                 if (item.children) {
                     // 有子路由
                     item.children = item.children.map(it=>{
-                        it.component =() => import(`../views/${it.url}`)
-                        return it
+                        // it.component =() => import(`../views/${it.url}`)
+                        // return it
+
+
+                        if (it.children) {
+                            // 有三级路由
+                            it.children = it.children.map(j=>{
+                                j.component =() => import(`../views/${j.url}`)
+                                return j
+                            })
+                            menuArray.push(...it.children)
+                        } else {
+                            it.component =() => import(`../views/${it.url}`)
+                            menuArray.push(it)
+                        }
+
                     })
-                   menuArray.push(...item.children)
+                   // menuArray.push(...item.children)
 
                 } else {
                     // 没有子
