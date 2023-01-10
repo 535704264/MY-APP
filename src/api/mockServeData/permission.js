@@ -85,6 +85,14 @@ export default {
                                             label: '发布商品',
                                             url: 'product/SpuAdd.vue'
                                         },
+                                        {
+                                            path: '/product/Manager',
+                                            name: 'Manager',
+                                            icon: 'attract',
+                                            label: '商品管理',
+                                            url: 'product/Manager.vue'
+                                        },
+
                                     ]
                                 },
                             ]
