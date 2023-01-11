@@ -134,7 +134,8 @@ export default {
     },
     menuData() {
       // 判断当前数据
-      return JSON.parse(Cookie.get('menu')) || this.$store.state.tab.menu
+      // return JSON.parse(Cookie.get('menu')) || this.$store.state.tab.menu
+      return JSON.parse(localStorage.getItem('menu')) || this.$store.state.tab.menu
     },
     isCollapse() {
       // 菜单折叠

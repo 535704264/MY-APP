@@ -1,4 +1,5 @@
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
+
 export default {
     state: {
         isCollapse: false, // 控制菜单的展开还是收起
@@ -35,13 +36,17 @@ export default {
         // 设置menu的数据
         setMenu(state, val) {
             this.menu = val
-            Cookie.set('menu', JSON.stringify(val))
+            // Cookie.set('menu', JSON.stringify(val))
+            localStorage.setItem('menu', JSON.stringify(val))
         },
         // 动态注册路由
         addMenu(state, router) {
             // 判断缓存中是否有数据
-            if(!Cookie.get('menu')) return
-            const menu = JSON.parse(Cookie.get('menu'))
+            // if(!Cookie.get('menu')) return
+            // const menu = JSON.parse(Cookie.get('menu'))
+            if(!localStorage.getItem('menu')) return
+            const menu = JSON.parse(localStorage.getItem('menu'))
+
             state.menu  = menu
             // 组装动态路由的数据
             const menuArray = []
@@ -84,7 +89,8 @@ export default {
         },
         setUserInfo(state, val) {
             // console.log(val)
-            Cookie.set('user', val)
+            // Cookie.set('user', val)
+            localStorage.setItem('user', val)
         },
     }
 }

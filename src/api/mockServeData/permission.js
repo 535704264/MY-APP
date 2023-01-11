@@ -129,13 +129,13 @@ export default {
                                             label: '采购需求',
                                             url: 'ware/Purchase.vue'
                                         },
-                                        // {
-                                        //     path: '/ware/PurchaseItem',
-                                        //     name: 'PurchaseItem',
-                                        //     icon: 'brush',
-                                        //     label: '采购需求',
-                                        //     url: 'ware/PurchaseItem.vue'
-                                        // }
+                                        {
+                                            path: '/ware/PurchaseItem',
+                                            name: 'PurchaseItem',
+                                            icon: 'brush',
+                                            label: '采购需求',
+                                            url: 'ware/PurchaseItem.vue'
+                                        }
                                     ]
                                 },
 
