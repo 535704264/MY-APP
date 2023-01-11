@@ -21,8 +21,6 @@
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
         <el-button
-            v-if="isAuth('ware:purchasedetail:save')"
-            type="primary"
             @click="addOrUpdateHandle()"
         >新增</el-button>
         <el-dropdown @command="handleBatchCommand" :disabled="dataListSelections.length <= 0">
@@ -130,6 +128,10 @@ export default {
   activated() {
     this.getDataList();
     this.getWares();
+  },
+  created() {
+    this.getDataList()
+    this.getDataList()
   },
   methods: {
     mergeItem() {

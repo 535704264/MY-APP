@@ -122,7 +122,7 @@ export default {
     this.getDataList();
   },
   created() {
-
+    this.getDataList();
   },
   methods: {
     opendrawer(row){
