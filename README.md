@@ -1,24 +1,8 @@
 # my-app
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
+## 版本
+- node v16.10.0  切换node：nvm use v16.10.0
+- 运行 npm run serve
 
 
 ### 学习资料
