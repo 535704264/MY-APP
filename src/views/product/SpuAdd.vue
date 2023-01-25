@@ -424,7 +424,7 @@ export default {
   },
   //计算属性类似于data概念
   computed: {},
-  //监控data中的数据变化
+  // 监控data中的数据变化
   watch: {
     uploadImages(val) {
       //扩展每个skus里面的imgs选项
