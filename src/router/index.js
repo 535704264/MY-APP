@@ -41,11 +41,16 @@ const routes = [
     }
 ]
 
-const router = new VueRouter(
-    {routes} // (缩写) 相当于routes: routes
-)
+// const router = new VueRouter(
+//     {routes} // (缩写) 相当于routes: routes
+// )
 
-export  default router
+const createRouter = () =>
+    new VueRouter(
+        {routes} // (缩写) 相当于routes: routes
+    );
+
+export default createRouter
 
 Vue.use(VueRouter)
 
