@@ -1,4 +1,5 @@
 // import Cookie from "js-cookie";
+// import Router from "vue-router"
 
 export default {
     state: {
@@ -82,6 +83,10 @@ export default {
 
             console.log(JSON.stringify(menuArray), 'menuArray')
             // 路由动态添加
+            // router.options.routes = menuArray
+            // router.matcher = new Router().matcher //match
+            // router.addRoutes(router.options.routes)
+
             menuArray.forEach(item=>{
                 // if (!router.hasRoute(item.name)){
                 //     router.addRoute('Main',item)
