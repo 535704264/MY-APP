@@ -81,7 +81,7 @@ export default {
                 }
             });
 
-            console.log(JSON.stringify(menuArray), 'menuArray')
+            // console.log(JSON.stringify(menuArray), 'menuArray')
             // 路由动态添加
             // router.options.routes = menuArray
             // router.matcher = new Router().matcher //match
@@ -91,11 +91,11 @@ export default {
                 // if (!router.hasRoute(item.name)){
                 //     router.addRoute('Main',item)
                 // }
-                console.log("--------")
-                console.log(item)
+                // console.log("--------")
+                // console.log(item)
                 router.addRoute('Main',item)
             })
-            console.log(router, router.getRoutes())
+            // console.log(router, router.getRoutes())
           //  menuArray.push()
         },
         setUserInfo(state, val) {
