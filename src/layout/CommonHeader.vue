@@ -45,6 +45,9 @@ export default {
         Cookie.remove('menu')
         // 跳转登陆页面
         this.$router.push('/login')
+        // console.log("执行了location.reload()11")
+        // location.reload()
+        // console.log("执行了location.reload()")
 
       }
     }

@@ -64,7 +64,10 @@ export default {
                   Cookie.set('token', data.data.token)
 
                   // 获取菜单的数据，存入store中
-                  //
+
+
+
+
                   this.$store.commit('setMenu', data.data.menu)
                   // todo 路径重复问题 Duplicate named xxxxx
                   this.$store.commit('addMenu', this.$router)
