@@ -5,10 +5,11 @@
       <h3 class="login_title">用户登录</h3>
       <!-- prop对应rules里的键 -->
       <el-form-item label="用户名" prop="username">
-        <el-input v-model="login.username" autocomplete="off" placeholder="请输入用户名"></el-input>
+        <!--el-input 要有id，如无新版本浏览器控制台将有警告-->
+        <el-input id="username" v-model="login.username" autocomplete="off" placeholder="请输入用户名" ></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="login.password" placeholder="请输入密码" autocomplete="off"></el-input>
+        <el-input  id="password" type="password" v-model="login.password" placeholder="请输入密码" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit" style="margin-left:40px;margin-top:9px">登陆</el-button>
@@ -64,9 +65,6 @@ export default {
                   Cookie.set('token', data.data.token)
 
                   // 获取菜单的数据，存入store中
-
-
-
 
                   this.$store.commit('setMenu', data.data.menu)
                   // todo 路径重复问题 Duplicate named xxxxx

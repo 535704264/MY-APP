@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 import homeApi from './mockServeData/home'
 import user from './mockServeData/user'
-import permission from './mockServeData/permission'
+import permission from './mockServeData/permission' // 导入功能权限相关
 
 // 定义mock 请求拦截
 Mock.mock('/api/home/gateData', homeApi.getStatisticalData())

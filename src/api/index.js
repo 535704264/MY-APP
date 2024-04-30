@@ -2,7 +2,7 @@ import http from '../utils/request'
 // import axios from "axios";
 // import Vue from 'vue'
 
-// 请求首页数据
+// 请求首页数据，登录相关
 // vue->mockjs 定义获取的方法
 export const getData = () => {
     // 返回一个promise对象
@@ -30,9 +30,10 @@ export const updateUser = (data) => {
 }
 
 export const getMenu = (data) => {
+    // permission.js 下的getMenu
+    // 此时请求的是Mock数据，非真实数据
     return http.post('/permission/getMenu/', data)
 }
-
 
 
 export const getProductCategory = (params) => {

@@ -3,7 +3,8 @@ export default {
     getMenu: config => {
         const { username, password } = JSON.parse(config.body)
         // 先判断用户是否存在
-        // 判断账号和密码是否对应
+        // 判断账号和密码是否对应，目前只是做的Mock假模拟
+        // todo 需要做真实用户权限分配的功能
         if (username === 'admin' && password === '1') {
             return {
                 code: 20000,

@@ -21,7 +21,7 @@
             :data="tableData"
             stripe
             style="width: 100%">
-          <el-table-column v-for="(val, key) in tableLabel" :prop="key" :label="val"></el-table-column>
+          <el-table-column v-for="(val, key) in tableLabel" :prop="key" :key="key" :label="val"></el-table-column>
         </el-table>
       </el-card>
     </el-col>

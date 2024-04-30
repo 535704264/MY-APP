@@ -8,6 +8,8 @@ import store from '@/store';
 // 后端请求，注释mock
 import './api/mock'
 import Cookie from "js-cookie";
+// Chrome 中的警告被动监听的警告
+import "default-passive-events"
 //
 import http from "@/utils/request";
 

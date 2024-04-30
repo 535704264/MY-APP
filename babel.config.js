@@ -10,5 +10,6 @@ module.exports = {
         "styleLibraryName": "theme-chalk"
       }
     ]
-  ]
+  ],
+  compact: false // 解决某个js文件的大小超过限制
 }
